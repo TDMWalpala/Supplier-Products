@@ -55,6 +55,7 @@ Start the Laravel development server:
 ##### Suppliers:
 - GET /api/suppliers: Get a list of all suppliers.
 - GET /api/suppliers/{id}: Get details of a specific supplier.
+- GET /api/search/suppliers?q={name or mobile}: Search for suppliers based on criteria.
 - POST /api/suppliers: Create a new supplier.
 - PUT /api/suppliers/{id}: Update details of a specific supplier.
 - DELETE /api/suppliers/{id}: Delete a specific supplier.
