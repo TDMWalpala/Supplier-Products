@@ -1,4 +1,13 @@
-# Supplier Products API
+
+# Supplier Products System
+The "Supplier Products" system is a Laravel-based web application for managing supplier details and associated products.
+
+## Technologies Used
+- [Laravel](https://laravel.com/)
+- [Vue.js](https://vuejs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+
+## Supplier Products API
 
 This is a simple API for managing suppliers and their products using Laravel.
 
@@ -18,10 +27,13 @@ Before you begin, make sure you have the following installed on your system:
    ```bash
    git clone https://github.com/TDMWalpala/Supplier-Products.git
 
+
+
 Change into the project directory:
 
 ```bash
   cd supplier-products
+  cd supplier_products api
 ```
 Install PHP dependencies:
 
@@ -67,3 +79,21 @@ Start the Laravel development server:
 - POST /api/products: Create a new product.
 - PUT /api/products/{id}: Update details of a specific product.
 - DELETE /api/products/{id}: Delete a specific product.
+
+## Supplier Products Vue.js Frontend
+
+Change into the frontend directory:
+
+```bash
+  cd supplier-products-frontend
+```
+Install Dependencies:
+
+```bash
+  npm install
+```
+Run Development Server
+
+```bash
+  npm run dev
+```
