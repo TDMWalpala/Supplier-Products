@@ -1,17 +1,22 @@
-<!-- SupplierList.vue -->
-
 <template>
   <div class="mt-2 mx-5 p-2">
     <h2>Supplier List</h2>
-
     <p>Page {{ currentPage }} of {{ totalPages }}</p>
-    <div class="container text-center"></div>
+    <div class="input-group mb-3 mx-8 p-1 container-sm">
+      <input
+        v-model="searchQuery"
+        type="text"
+        class="form-control"
+        placeholder="Search suppliers..."
+      />
+      <button @click="search" class="btn btn-primary">Search</button>
+    </div>
 
     <ul class="list-group">
       <li
         v-for="supplier in suppliers"
         :key="supplier.id"
-        class="list-group-item list-group-item-light mx-5 d-flex d-flex justify-content-between"
+        class="list-group-item list-group-item-light mx-5 d-flex justify-content-between"
       >
         <div class="d-flex justify-content-evenly p-2 mx-2">
           <p class="fw-bold fs-5 mx-2">{{ supplier.name }}</p>
@@ -119,6 +124,7 @@ export default {
       updateSupplierName: "",
       updateContactPerson: "",
       updateMobileNumbers: "",
+      searchQuery: "",
     };
   },
   mounted() {
@@ -126,8 +132,13 @@ export default {
   },
   methods: {
     fetchSuppliers() {
+      const apiUrl =
+        this.searchQuery !== ""
+          ? `http://127.0.0.1:8000/api/search?q=${this.searchQuery}`
+          : `http://127.0.0.1:8000/api/suppliers?page=${this.currentPage}`;
+
       axios
-        .get(`http://127.0.0.1:8000/api/suppliers?page=${this.currentPage}`)
+        .get(apiUrl)
         .then((response) => {
           this.suppliers = response.data.data;
           this.currentPage = response.data.current_page;
@@ -195,6 +206,10 @@ export default {
             console.error("Error deleting supplier:", error);
           });
       }
+    },
+    search() {
+      this.currentPage = 1;
+      this.fetchSuppliers();
     },
   },
 };

@@ -1,5 +1,3 @@
-<!-- SupplierAddForm.vue -->
-
 <template>
   <div class="container mt-5">
     <h2 class="mb-4">Add Supplier Details</h2>
@@ -17,9 +15,16 @@
       <div class="mb-3">
         <label for="mobileNumbers" class="form-label">Mobile Numbers:</label>
         <input v-model="mobileNumbers" type="text" class="form-control" id="mobileNumbers" required />
+        <div v-if="fieldErrors.mobile_numbers" class="text-danger">
+          {{ fieldErrors.mobile_numbers[0] }}
+        </div>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div v-if="errorMessage" class="mt-3 text-danger">
+        {{ errorMessage }}
+      </div>
     </form>
   </div>
 </template>
@@ -33,6 +38,8 @@ export default {
       supplierName: '',
       contactPerson: '',
       mobileNumbers: '',
+      errorMessage: '',
+      fieldErrors: {},
     };
   },
   methods: {
@@ -50,6 +57,16 @@ export default {
         })
         .catch(error => {
           console.error('Error adding supplier:', error);
+          if (error.response && error.response.data) {
+            if (error.response.data.message) {
+              this.errorMessage = error.response.data.message;
+            }
+            if (error.response.data.errors) {
+              this.fieldErrors = error.response.data.errors;
+            }
+          } else {
+            this.errorMessage = 'An error occurred while adding the supplier.';
+          }
         });
     },
   },

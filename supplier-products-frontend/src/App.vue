@@ -25,26 +25,12 @@ import { RouterLink, RouterView } from "vue-router";
                 <RouterLink class="nav-link" to="/view-suppliers">View Suppliers</RouterLink>
               </li>
               <li class="nav-item">
-                <RouterLink class="nav-link" to="/view-products">View Product</RouterLink>
+                <RouterLink class="nav-link" to="/view-products">View Products</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink class="nav-link" to="/add-supplier">Add Suppliers</RouterLink>
               </li>
-              <li class="nav-item">
-                <RouterLink class="nav-link" to="/search-supplier">Search Suppliers</RouterLink>
-              </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>

@@ -4,7 +4,6 @@ import SupplierList from '../components/SupplierList.vue'
 import ProductList from '../components/ProductList.vue'
 import SupplierAddForm from '../components/SupplierAddForm.vue'
 import ProductAddForm from '../components/ProductAddForm.vue';
-import SupplierSearch from '../components/SearchComponent.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,11 +34,6 @@ const router = createRouter({
       name: 'add-product',
       component: ProductAddForm,
       props: true,
-    },
-    {
-      path: '/search-supplier', 
-      name: 'search-supplier',
-      component: SupplierSearch, 
     },
     
   ]
